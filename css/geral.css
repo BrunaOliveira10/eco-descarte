@@ -412,7 +412,7 @@ footer {
 
 .sobre {
     background: url("../imagens/sobre-nos.jpg") center/cover no-repeat;
-    height: 60vh; /* antes: 500px */
+    height: 60vh; /* antes: 500px */ /*A foto grande do sobre eco descarte*/
     display: flex;
     align-items: center;
     padding-left: 3%; /* antes: 60px */
