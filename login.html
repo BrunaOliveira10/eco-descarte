@@ -1,42 +1,114 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="style.css">
-    <title>Document</title>
-    
+
+    <title>Eco Descarte - Login</title>
+
+    <!-- Ícones -->
+    <link
+        href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+        rel="stylesheet"
+    >
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/login.css">
 </head>
+
 <body>
-     <main class="conteiner">
-        <form>
-            <h1>Login DvClub</h1>
-            <div class="input-box">
-                <input placeholder="Usuário" type="email">
-                <i class="bx bxs-user"></i>
+
+    <main class="container">
+
+
+        <div class="login-box">
+
+            <!-- Imagem original do usuário -->
+            <div class="logo">
+                <img
+                    src="imagens/user-icon-on-transparent-background-free-png.webp"
+                    alt="Ícone de usuário"
+                >
             </div>
-            <div class="input-box">
-                <input placeholder="Senha" type="password">
-                <i class="bx bxs-lock-alt"></i>
-            </div>
 
-            <div class="remember-forgot">
-                <label>
-                    <input type="checkbox">
-                lembrar minha Senha
-            </label>
-            <a href="#">Esqueci minha senha</a>
-        </div>
+            <h1>Eco Descarte</h1>
 
-        <button type="submit">Login</button>
+            <p class="subtitle">
+                Cuide do meio ambiente com a gente 🌱
+            </p>
 
-        <div class="register-link">
-            <P>Não tem uma conta? <a href="#">Cadastre-se</a></P>
+            <!-- Formulário -->
+            <form id="formLogin">
 
-        </div>
-</form>
+                <!-- Usuário -->
+                <div class="input-box">
+                    <i class="bx bxs-user"></i>
+
+                    <input
+                        type="text"
+                        id="usuario"
+                        name="usuario"
+                        placeholder=" "
+                        autocomplete="username"
+                        required
+                    >
+
+                    <label for="usuario">Usuário</label>
+                </div>
+
+                <!-- Senha -->
+                <div class="input-box">
+                    <i class="bx bxs-lock-alt"></i>
+
+                    <input
+                        type="password"
+                        id="senha"
+                        name="senha"
+                        placeholder=" "
+                        autocomplete="current-password"
+                        required
+                    >
+
+                    <label for="senha">Senha</label>
+                </div>
+
+                <!-- Opções -->
+                <div class="remember-forgot">
+
+                    <label class="remember">
+                        <input type="checkbox" id="lembrar">
+                        <span>Lembrar de mim</span>
+                    </label>
+
+                </div>
+
+                <!-- Botão Entrar -->
+                <button type="submit" class="btn">
+                    Entrar na conta
+                    <i class="bx bx-right-arrow-alt"></i>
+                </button>
+
+                <!-- Cadastro -->
+                <div class="register-link">
+                    <p>
+                        Não tem uma conta?
+                        <a href="cadastro.html">Cadastre-se</a>
+                    </p>
+                </div>
+
+                <!-- Divisor -->
+                <div class="divisor">
+                    <span></span>
+                </div>
+
+              
+        <!-- Botão Voltar -->
+        <a href="index.html" class="btn-voltar">
+            <i class="bx bx-arrow-back"></i>
+            <span>Voltar ao início</span>
+        </a>
+
+    </main>
 </body>
-
 </html>
