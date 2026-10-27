@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Eco Descarte - Cadastro</title>
+
+    <!-- Fonte Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/cadastro.css">
+</head>
+
+<body>
+
+    <main class="container">
+
+        <section class="form-box">
+
+            <!-- Logo -->
+            <div class="logo">
+                <img src="imagens/logo-eco-descarte.png" alt="Logo Eco Descarte">
+            </div>
+
+            <h2>Cadastre-se</h2>
+
+            <p class="descricao">
+                Crie sua conta no Eco Descarte!
+            </p>
+
+            <form action="#" method="post">
+
+                <!-- Nome -->
+                <div class="input-box">
+                    <label for="nome">Nome completo<span>*</span></label>
+                    <input type="text" id="nome" name="nome"
+                        autocomplete="name" required>
+                </div>
+
+                <!-- E-mail -->
+                <div class="input-box">
+                    <label for="email">E-mail<span>*</span></label>
+                    <input type="email" id="email" name="email"
+                        autocomplete="email" required>
+                </div>
+
+                <!-- Senha -->
+                <div class="input-box">
+                    <label for="senha">Senha<span>*</span></label>
+                    <input type="password" id="senha" name="senha"
+                        autocomplete="new-password" minlength="8" required>
+                </div>
+
+                <!-- Confirmar senha -->
+                <div class="input-box">
+                    <label for="confirmar-senha">Confirmar senha<span>*</span></label>
+                    <input type="password" id="confirmar-senha"
+                        name="confirmar-senha"
+                        autocomplete="new-password" minlength="8" required>
+                </div>
+
+                <!-- Endereço -->
+                <div class="input-box">
+                    <label for="endereco">Endereço<span>*</span></label>
+                    <input type="text" id="endereco" name="endereco"
+                        autocomplete="street-address" required>
+                </div>
+
+                <!-- Complemento -->
+                <div class="input-box">
+                    <label for="complemento">Complemento</label>
+                    <input type="text" id="complemento" name="complemento">
+                </div>
+
+                <!-- Cidade -->
+                <div class="input-box">
+                    <label for="cidade">Cidade<span>*</span></label>
+                    <input type="text" id="cidade" name="cidade"
+                        autocomplete="address-level2" required>
+                </div>
+
+                <!-- Estado -->
+                <div class="input-box">
+                    <label for="estado">Estado<span>*</span></label>
+                    <input type="text" id="estado" name="estado"
+                        maxlength="2" placeholder="Ex.: TO"
+                        autocomplete="address-level1" required>
+                </div>
+
+                <!-- Botão -->
+                <button type="submit" class="btn">
+                    CADASTRAR
+                </button>
+
+                <!-- Link para login -->
+                <p class="signup">
+                    Já possui uma conta?
+                    <a href="login.html">Entrar</a>
+                </p>
+
+                <!-- Voltar para a página inicial -->
+                <a href="index.html" class="btn-voltar">
+                    Voltar para o início
+                </a>
+
+            </form>
+
+        </section>
+
+    </main>
+
+</body>
+</html>
+```

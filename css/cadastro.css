@@ -1,0 +1,216 @@
+/* Configurações gerais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Fundo da página */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 30px 15px;
+
+    background: linear-gradient(
+        180deg,
+        #2f6b2a 0%,
+        #30cc64 48%,
+        #006341 100%
+    );
+}
+
+/* Container principal */
+.container {
+    width: 100%;
+    max-width: 480px;
+    margin: auto;
+}
+
+/* Caixa do formulário */
+.form-box {
+    width: 100%;
+    padding: 35px 40px;
+
+    background: rgba(0, 35, 48, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 20px;
+
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.20);
+}
+
+/* Logo */
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.logo img {
+    width: 75px;
+    height: 75px;
+    object-fit: contain;
+}
+
+/* Título */
+.form-box h2 {
+    font-size: 28px;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+/* Texto abaixo do título */
+.descricao {
+    color: #d7eeee;
+    font-size: 13px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Campos */
+.input-box {
+    position: relative;
+    width: 100%;
+    margin: 23px 0;
+}
+
+/* Texto dos campos */
+.input-box label {
+    display: block;
+    color: #e5f3f2;
+    font-size: 14px;
+    margin-bottom: 9px;
+}
+
+/* Asterisco dos campos obrigatórios */
+.input-box label span {
+    color: #ff5757;
+    font-weight: 700;
+}
+
+/* Caixa de entrada */
+.input-box input {
+    display: block;
+    width: 100%;
+    height: 45px;
+
+    background: #107b76;
+    border: 2px solid transparent;
+    border-radius: 25px;
+    outline: none;
+
+    color: #fff;
+    font-size: 14px;
+    padding: 0 16px;
+
+    transition: 0.3s;
+}
+
+/* Texto de exemplo */
+.input-box input::placeholder {
+    color: #c4e2df;
+    font-size: 12px;
+}
+
+/* Efeito ao selecionar um campo */
+.input-box input:focus {
+    border-color: #e6b400;
+    background: #0c706b;
+    box-shadow: 0 0 8px rgba(230, 180, 0, 0.20);
+}
+
+/* Botão cadastrar */
+.btn {
+    display: block;
+    width: 100%;
+    min-height: 46px;
+
+    margin-top: 30px;
+
+    background: #e5ad00;
+    border: none;
+    border-radius: 8px;
+
+    color: #17251c;
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* Efeito do botão */
+.btn:hover {
+    background: #ffc928;
+    box-shadow: 0 0 15px rgba(255, 201, 40, 0.25);
+    transform: translateY(-2px);
+}
+
+/* Texto para entrar */
+.signup {
+    margin-top: 24px;
+    text-align: center;
+    color: #e5f3f2;
+    font-size: 13px;
+}
+
+/* Link para login */
+.signup a {
+    color: #ffcc33;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.signup a:hover {
+    text-decoration: underline;
+}
+
+/* Botão voltar */
+.btn-voltar {
+    display: block;
+    width: fit-content;
+    margin: 18px auto 0;
+
+    color: #d7eeee;
+    font-size: 12px;
+    text-decoration: none;
+
+    transition: 0.3s;
+}
+
+.btn-voltar:hover {
+    color: #ffcc33;
+}
+
+/* Responsividade para celulares */
+@media (max-width: 450px) {
+    body {
+        padding: 20px 12px;
+    }
+
+    .container {
+        max-width: 100%;
+    }
+
+    .form-box {
+        padding: 28px 22px;
+        border-radius: 16px;
+    }
+
+    .form-box h2 {
+        font-size: 24px;
+    }
+
+    .logo img {
+        width: 65px;
+        height: 65px;
+    }
+
+    .input-box {
+        margin: 20px 0;
+    }
+}
