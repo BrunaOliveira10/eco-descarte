@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoDescarte - Denúncias</title>
+</head>
+<body>
+    <h1>Denúnicas de descarte irregular</h1>
+    <p><a href="index.html"> Voltar ao Painel</a></p>
+
+    <form id="form-denuncia">
+        <h2>Nova denúncia</h2>
+        <textarea name="descricao" placeholder="O que você viu? Ex: entulho jogado no terreno" rows="3" required></textarea>
+        <input name="latitude" placeholder="Latitude" required>
+        <input name="longitude" placeholder="Longitude" required>
+        <button type="button" id="localizacao">📍 Usar Minha Localização</button>
+        <button>Enviar denúncia</button>
+    </form>
+
+    <p id="mensagem"></p>
+    <h2 id="titulo-lista">Minhas denúncias</h2>
+    <div id="lista"></div>
+
+    <script>
+        const mensagem = document.getElementById("mensagem");
+        const form = document.getElementById("form-denuncia");
+        let admin = false;
+
+        function mostrar(json, ok) {
+            mensagem.textContent = json.erro || "Salvo!";
+            mensagem.className = ok ? "ok" : "erro";
+        }
+
+        document.getElementById("localizacao").addEventListener("click", () => {
+            navigator.geolocation.getCurrentPosition(
+                (posicao) => {
+                    form.latitude.value = posicao.coords.latitude;
+                    form.longitude.value = posicao.coords.longitude;
+                },
+                () => mostrar({erro: "Não foi possível pegar sua localização." }, false)
+            );
+        });
+
+        form.addEventListener("submit", async (evento) => {
+            evento.preventDefault();
+            const resposta = await fetch("/api/denuncias", {
+                method: "POST",
+                headers: { "Content-Type": "application/json"},
+                body: JSON.stringify(Object.fromEntries(new FormData(form))),
+            });
+            mostrar(await resposta.json(), resposta.ok);
+            if (resposta.ok) {
+                form.reset ();
+                carregar ();
+            }
+        });
+
+        async function responder(id, cartao) {
+            const resposta = await fetch(`/api/denuncias/${id}`, {
+                method: "PATCH",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    status: cartao.querySelector("select").value,
+                    resposta: cartao.querySelector("textarea").value,
+                }),
+            });
+            mostrar(await resposta.json(), resposta.ok);
+            carregar();
+        }
+
+        async function carregar() {
+            const denuncias = await (await fetch("/api/denuncias")).json();
+            const lista = document.getElementById("lista");
+            lista.innerHTML = denuncias.length ? "" : "Nenhuma denúncia ainda.";
+
+            for (const d of denuncias) {
+                const cartao = document.createElement("div"); 
+                cartao.className = "cartao";
+                cartao.innerHTML = ` 
+                  <p><b>#${d.id}</b> <span class="status ${d.status}">${d.status}</span></p>
+                  <p class="descricao"></p>
+                  <p class="meta">por <span class="quem"></span> em ${d.criada_em} •
+                    <a target="_blank" href="https://www.google.com/maps/search/?api=1&query=${d.latitude},${d.longitude}">abrir no Google Maps</a></p>
+                  <!-- Mapa do Google sem chave de API. "output=embed" não é oficial: funciona, mas o Google pode mudar. -->
+                  <iframe src="https://maps.google.com/maps?q=${d.latitude},${d.longitude}&z=16&output=embed"
+                          width="100%" height="250" style="border:0" loading="lazy"></iframe>
+                  <p class="resposta"></p>`;
+
+                cartao.querySelector(".descricao").textContent = d.descricao;
+                cartao.querySelector(".quem").textContent = d.denunciante;
+                cartao.querySelector(".resposta").textContent = d.resposta ? `Resposta: ${d.resposta}` : "";
+
+                if (admin) {
+                    const painel = document.createElement("div");
+                    painel.className = "linha";
+                    painel.innerHTML = `
+                      <select>
+                        <option value="aberta">aberta</option>
+                        <option value="em_andamento">em_andamento</option>
+                        <option value="resolvida">resolvida</option>
+                      </select>
+                      <textarea rows="1" placeholder="Resposta (opcional)"></textarea>
+                      <button>Responder</button>`;
+                    painel.querySelector("select").value = d.status;
+                    painel.querySelector("button").onclick = () => responder(d.id, painel);
+                    cartao.append(painel);
+                }
+                lista.append(cartao);
+            }
+        }
+
+        fetch("/api/eu").then(async (resposta) => {
+            if (!resposta.ok) return (location.href = "/");
+            admin = (await resposta.json ()).perfil === "admin";
+            if (admin) document.getElementById("titulo-lista").textContent = "Todas as denúncias (admin)";
+            carregar (); 
+        });
+    </script>
+    
+</body>
+</html>
